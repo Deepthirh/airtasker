@@ -14,7 +14,6 @@ public class EditTaskStep {
 
     @When("^I edit the task to \"([^\"]*)\"$")
     public void i_edit_the_task_to(String task) throws Throwable {
-        homepage.navigateTo();
         homepage.editTask(task);
     }
 

@@ -15,7 +15,6 @@ public class CompleteTaskStep {
 
     @When("^I tick the task checkbox$")
     public void iTickTheTaskCheckbox() throws Throwable {
-        homepage.navigateTo();
         homepage.completeTask();
     }
 

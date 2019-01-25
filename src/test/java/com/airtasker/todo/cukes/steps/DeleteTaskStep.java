@@ -14,7 +14,6 @@ public class DeleteTaskStep {
 
     @When("^I click on X beside the task$")
     public void iClickOnXBesideTheTask() throws Throwable {
-        homepage.navigateTo();
         homepage.deleteTask();
     }
 
