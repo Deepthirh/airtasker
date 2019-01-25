@@ -4,7 +4,7 @@
 
 - Install Java 8
 - Install Maven 3
-- Set JDK path in path environment variable
+- Set JDK path to `bin` folder in path environment variable
 - Set Maven path to `bin` folder in path environment variable
 
 ## Run
