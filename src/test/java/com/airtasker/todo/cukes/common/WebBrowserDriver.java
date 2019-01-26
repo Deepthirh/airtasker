@@ -6,6 +6,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebBrowserDriver {
 
+    public static final int TIME_OUT_IN_SECONDS = 20;
+
     private WebDriver driver;
     private WebDriverWait wait;
     private String appUrl;
@@ -16,7 +18,7 @@ public class WebBrowserDriver {
 
     void launchDriver() {
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 20);
+        wait = new WebDriverWait(driver, TIME_OUT_IN_SECONDS);
     }
 
     void closeDriver() {

@@ -7,6 +7,7 @@ import com.airtasker.todo.cukes.common.WebBrowserDriver;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +19,7 @@ import static org.hamcrest.collection.IsEmptyCollection.empty;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class Homepage {
 
@@ -75,7 +77,12 @@ public class Homepage {
     }
 
     public void verifyEmptyTodoList() {
-        webBrowserDriver.getWait().until(webDriver -> alertContainer.isDisplayed());
+        try {
+            webBrowserDriver.getWait().until(webDriver -> alertContainer.isDisplayed());
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+            fail("Couldn't find Alert Container within " + webBrowserDriver.TIME_OUT_IN_SECONDS + " seconds");
+        }
         assertTrue(alertContainer.isDisplayed());
         assertThat(alertContainer.getText(), is("All Caught Up\n" +
                 "You do not have any todo items"));
@@ -85,6 +92,7 @@ public class Homepage {
         lastAddedTask = task;
         waitUntilPageLoads();
         whatDoUWant2DoTxtBox.sendKeys(task + "\n");
+        webBrowserDriver.getWait().until(webDriver -> todoItems.isDisplayed());
     }
 
     public void verifyListedTask() {

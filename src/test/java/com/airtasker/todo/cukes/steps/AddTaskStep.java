@@ -26,4 +26,9 @@ public class AddTaskStep {
     public void its_status_is_non_completed() throws Throwable {
         homepage.verifyCompletedTask(false);
     }
+
+    @Then("^The task is not listed under Todo Items$")
+    public void theTaskIsNotListedUnderTodoItems() throws Throwable {
+        homepage.verifyEmptyTodoList();
+    }
 }

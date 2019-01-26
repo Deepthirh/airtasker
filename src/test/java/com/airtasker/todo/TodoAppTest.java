@@ -6,7 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features="src/test/resources/com/airtasker/todo/cukes/features/", plugin = { "pretty", "html:target/htmlreports" })
+@CucumberOptions(features="src/test/resources/com/airtasker/todo/cukes/features/", tags = "@all", plugin = { "pretty", "html:target/htmlreports" })
 public class TodoAppTest {
 
     @BeforeClass
